@@ -16,4 +16,6 @@ import java.util.Map;
  */
 public class Database {
     private static Map<String, User> users = new HashMap<String, User>();
+
+
 }
