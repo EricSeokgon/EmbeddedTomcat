@@ -17,11 +17,9 @@ import java.io.PrintWriter;
  */
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
-    private String name;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        name = req.getParameter("name");
+        String name = req.getParameter("name");
         System.out.println("Request Success!");
         PrintWriter out = resp.getWriter();
         out.print(name + " Hello World form Servlet");
