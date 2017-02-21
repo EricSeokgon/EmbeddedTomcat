@@ -17,10 +17,13 @@ import java.io.PrintWriter;
  */
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
+    private String name;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String value = req.getParameter("name");
+        name = req.getParameter("name");
+        System.out.println("Request Success!");
         PrintWriter out = resp.getWriter();
-        out.print(value + " Hello World!!");
+        out.print(name + " Hello World form Servlet");
     }
 }
