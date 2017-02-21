@@ -18,6 +18,4 @@
     if (password.equals(user.getPassword())) {
         //로그인 처리
     }
-
-
 %>

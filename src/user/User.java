@@ -37,4 +37,8 @@ public class User {
     public String getEmail() {
         return email;
     }
+
+    public boolean matchPassword(String newPassword) {
+        return this.password.equals(newPassword);
+    }
 }

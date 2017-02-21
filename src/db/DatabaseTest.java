@@ -25,6 +25,7 @@ public class DatabaseTest {
         assertEquals(user, dbuser);
     }
 
+    @Test
     public void addANdFindWhenNotExisted() {
         User dbuser = Database.findByUserId("userId2");
         assertNull(dbuser);
