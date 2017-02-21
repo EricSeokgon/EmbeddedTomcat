@@ -44,13 +44,14 @@ public class User {
         return this.password.equals(newPassword);
     }
 
-    public static void login(String userId, String password) throws UserNotFoundException {
+    public static boolean login(String userId, String password) throws UserNotFoundException, PasswordMismatchException {
         User user = Database.findByUserId(userId);
         if (user == null) {
             throw new UserNotFoundException();
         }
-        if (user.matchPassword(password)) {
-
+        if (!user.matchPassword(password)) {
+            throw new PasswordMismatchException();
         }
+        return true;
     }
 }

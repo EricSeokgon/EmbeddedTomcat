@@ -31,7 +31,7 @@ public class UserTest {
     public void login() throws Exception {
         User user = UserTest.test_user;
         Database.addUser(user);
-        User.login(test_user.getUserId(), test_user.getPassword());
+        assertTrue(User.login(test_user.getUserId(), test_user.getPassword()));
     }
 
     @Test(expected = UserNotFoundException.class)
