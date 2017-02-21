@@ -1,5 +1,8 @@
 package db;
 
+import user.User;
+
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -12,5 +15,5 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class Database {
-    private static Map<String, >
+    private static Map<String, User> users = new HashMap<String, User>();
 }
