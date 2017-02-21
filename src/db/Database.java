@@ -20,4 +20,8 @@ public class Database {
     public static void addUser(User user) {
         users.put(user.getUserId(), user);
     }
+
+    public static User findByUserId(String userId) {
+        return users.get(userId);
+    }
 }
