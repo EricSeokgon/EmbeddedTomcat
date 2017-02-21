@@ -3,6 +3,9 @@ package db;
 import org.junit.jupiter.api.Test;
 import user.User;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 /**
  * Project: EmbeddedTomcat
  * FileName: DatabaseTest
@@ -19,8 +22,12 @@ public class DatabaseTest {
         Database.addUser(user);
 
         User dbuser = Database.findByUserId(user.getUserId());
+        assertEquals(user, dbuser);
+    }
 
-
+    public void addANdFindWhenNotExisted() {
+        User dbuser = Database.findByUserId("userId2");
+        assertNull(dbuser);
     }
 
 }
