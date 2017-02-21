@@ -15,7 +15,7 @@ import java.io.PrintWriter;
  * Note:
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet("/hello")
+@WebServlet(name = "HelloWorld", urlPatterns = {"/helloworld", "/hello", "/hello/world"})
 public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
