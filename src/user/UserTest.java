@@ -1,6 +1,7 @@
 package user;
 
-import org.junit.jupiter.api.Test;
+import db.Database;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,18 +15,34 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * To change this template use File | Settings | File Templates.
  */
 public class UserTest {
-    public static User user = new User("userId", "password", "name", "skee@e-ncom.co.kr");
+    public static User test_user = new User("userId", "password", "name", "skee@e-ncom.co.kr");
 
     @Test
     public void matchPassword() {
-        boolean result = user.matchPassword("password");
-        assertTrue(result);
+        assertTrue(test_user.matchPassword("password"));
     }
 
     @Test
     public void notmatchPassword() {
-        boolean result = user.matchPassword("password2");
-        assertTrue(result);
+        assertTrue(test_user.matchPassword("password2"));
+    }
+
+    @Test
+    public void login() throws Exception {
+        User user = UserTest.test_user;
+        Database.addUser(user);
+        User.login(test_user.getUserId(), test_user.getPassword());
+    }
+
+    @Test(expected = UserNotFoundException.class)
+    public void loginWhenNotExitedUser() throws Exception {
+        User.login("userId2", test_user.getPassword());
+    }
+
+    @Test(expected = PasswordMismatchException.class)
+    public void loginWhenNotPasswordMismatch() throws Exception {
+        User user = UserTest.test_user;
+        User.login(test_user.getUserId(), "password2");
     }
 
 }

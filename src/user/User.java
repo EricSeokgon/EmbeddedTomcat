@@ -1,5 +1,7 @@
 package user;
 
+import db.Database;
+
 /**
  * Project: EmbeddedTomcat
  * FileName: User
@@ -40,5 +42,15 @@ public class User {
 
     public boolean matchPassword(String newPassword) {
         return this.password.equals(newPassword);
+    }
+
+    public static void login(String userId, String password) throws UserNotFoundException {
+        User user = Database.findByUserId(userId);
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
+        if (user.matchPassword(password)) {
+
+        }
     }
 }
