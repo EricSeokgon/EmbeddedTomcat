@@ -42,7 +42,7 @@ public class UserTest {
     @Test(expected = PasswordMismatchException.class)
     public void loginWhenNotPasswordMismatch() throws Exception {
         User user = UserTest.test_user;
-        User.login(test_user.getUserId(), "password2");
+        User.login(test_user.getUserId(), "password");
     }
 
 }

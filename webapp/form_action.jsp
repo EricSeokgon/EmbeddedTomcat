@@ -9,7 +9,11 @@
 
     //out.print(userId + " : " + password + " : " + name + " : " + email);
 
-    User user = Database.findByUserId(userId);
+    //User user = Database.findByUserId(userId);
+    User user = new User(userId, password, name, email);
+    Database.addUser(user);
+
+    response.sendRedirect("/");
 
     if (user == null) {
         //사용자가 존재하지 않는다는 것을 에러 메시지 전송
