@@ -9,5 +9,5 @@
         session.setAttribute("userId", userId);
     }
 
-    response.sendRedirect("/");
+    response.sendRedirect("/index.jsp");
 %>
