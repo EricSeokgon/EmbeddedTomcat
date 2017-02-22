@@ -12,6 +12,16 @@
 </div>
 
 <form action="/login_action.jsp" method="post">
+    <%
+        Object errorMessage = request.getAttribute("errorMessage");
+        if (errorMessage != null) {
+    %>
+    <div>
+        <label><% out.print(errorMessage); %></label>
+    </div>
+    <%
+        }
+    %>
     <div>
         <%--@declare id="userid"--%><label for="userId">사용자 아이디</label>
         <div>
