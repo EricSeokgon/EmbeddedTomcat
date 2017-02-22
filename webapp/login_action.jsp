@@ -4,10 +4,6 @@
 <%
     String userId = request.getParameter("userId");
     String password = request.getParameter("password");
-    String name = request.getParameter("name");
-    String email = request.getParameter("email");
-
-    //out.print(userId + " : " + password + " : " + name + " : " + email);
 
     User user = Database.findByUserId(userId);
 
@@ -18,4 +14,7 @@
     if (password.equals(user.getPassword())) {
         //로그인 처리
     }
+
+
+
 %>

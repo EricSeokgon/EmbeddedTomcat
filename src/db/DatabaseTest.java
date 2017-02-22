@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  */
 public class DatabaseTest {
     @Test
-    public void addAndFind() {
+    public void addANdFindWhenExisted() {
         User user = new User("userId", "password", "name", "sklee@e-ncom.co.kr");
         Database.addUser(user);
 
