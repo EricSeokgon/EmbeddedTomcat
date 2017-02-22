@@ -8,4 +8,6 @@
     if (User.login(userId, password)) {
         session.setAttribute("userId", userId);
     }
+
+    response.sendRedirect("/");
 %>
