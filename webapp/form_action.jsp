@@ -11,11 +11,13 @@
 
     User user = Database.findByUserId(userId);
 
-    if (user == null) {
+    /*if (user == null) {
         //사용자가 존재하지 않는다는 것을 에러 메시지 전송
     }
 
     if (password.equals(user.getPassword())) {
         //로그인 처리
-    }
+    }*/
+
+    response.sendRedirect("/");
 %>

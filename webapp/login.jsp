@@ -11,7 +11,7 @@
     <h1>로그인</h1>
 </div>
 
-<form action="/lgin_action.jsp" method="post">
+<form action="/login_action.jsp" method="post">
     <div>
         <%--@declare id="userid"--%><label for="userId">사용자 아이디</label>
         <div>
