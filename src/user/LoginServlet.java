@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 
     private void forwordJSP(HttpServletRequest request, HttpServletResponse response, String o) throws ServletException, IOException {
         request.setAttribute("errorMessage", o);
-        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
         rd.forward(request, response);
     }
 }
