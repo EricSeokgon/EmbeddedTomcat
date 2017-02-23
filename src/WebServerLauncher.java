@@ -24,8 +24,10 @@ public class WebServerLauncher {
         tomcat.setPort(Integer.valueOf(webPort));
         Connector connector = tomcat.getConnector();
         connector.setURIEncoding("UTF-8");
+
         tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
         System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
+
         tomcat.start();
         tomcat.getServer().await();
     }
