@@ -32,13 +32,15 @@ public class LoginServlet extends HttpServlet {
 
             response.sendRedirect("/index.jsp");
         } catch (UserNotFoundException e) {
-            request.setAttribute("errorMessage", "존재하지 않는 사용자 입니다. 다시 로그인하세요");
-            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            rd.forward(request, response);
+            forwordJSP(request, response, "존재하지 않는 사용자 입니다. 다시 로그인하세요");
         } catch (PasswordMismatchException e) {
-            request.setAttribute("errorMessage", "존재하지 않는 패스워드 입니다. 다시 로그인하세요");
-            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            rd.forward(request, response);
+            forwordJSP(request, response, "존재하지 않는 패스워드 입니다. 다시 로그인하세요");
         }
+    }
+
+    private void forwordJSP(HttpServletRequest request, HttpServletResponse response, String o) throws ServletException, IOException {
+        request.setAttribute("errorMessage", o);
+        RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+        rd.forward(request, response);
     }
 }
