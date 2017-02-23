@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("userId", userId);
 
-            response.sendRedirect("/index.jsp");
+            response.sendRedirect("/");
         } catch (UserNotFoundException e) {
             forwordJSP(request, response, "존재하지 않는 사용자 입니다. 다시 로그인하세요");
         } catch (PasswordMismatchException e) {
