@@ -7,9 +7,6 @@
     String name = request.getParameter("name");
     String email = request.getParameter("email");
 
-    //out.print(userId + " : " + password + " : " + name + " : " + email);
-    //User user = Database.findByUserId(userId);
-
     User user = new User(userId, password, name, email);
     Database.addUser(user);
 
