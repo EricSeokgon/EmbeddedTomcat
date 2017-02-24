@@ -1,6 +1,7 @@
 package db;
 
 import user.User;
+import user.UserTest;
 
 import java.sql.*;
 
@@ -55,5 +56,9 @@ public class UserDAO {
                 rs.getString("email"));
     }
 
+    public void addUser(User user) throws SQLException {
+        UserDAO userDAO = new UserDAO();
+        userDAO.insert(UserTest.test_user);
+    }
 }
 

@@ -1,6 +1,8 @@
 package user;
 
-import db.Database;
+import db.UserDAO;
+
+import java.sql.SQLException;
 
 /**
  * Project: EmbeddedTomcat
@@ -40,6 +42,22 @@ public class User {
         return email;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,7 +85,13 @@ public class User {
     }
 
     public static boolean login(String userId, String password) throws UserNotFoundException, PasswordMismatchException {
-        User user = Database.findByUserId(userId);
+        UserDAO userDAO = new UserDAO();
+        User user = null;
+        try {
+            user = userDAO.findByUserId(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         if (user == null) {
             throw new UserNotFoundException();
         }

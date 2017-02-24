@@ -27,7 +27,7 @@ public class DatabaseTest {
 
     @Test
     public void addANdFindWhenNotExisted() {
-        User dbuser = Database.findByUserId("userId2");
+        User dbuser = Database.findByUserId("userId");
         assertNull(dbuser);
     }
 

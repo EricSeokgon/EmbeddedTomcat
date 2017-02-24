@@ -1,6 +1,6 @@
 package user;
 
-import db.Database;
+import db.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * Project: EmbeddedTomcat
@@ -28,7 +29,12 @@ public class SaveUserServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         User user = new User(userId, password, name, email);
-        Database.addUser(user);
+        UserDAO userDAO = new UserDAO();
+        try {
+            userDAO.addUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         response.sendRedirect("/");
 
