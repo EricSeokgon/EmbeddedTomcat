@@ -44,14 +44,16 @@ public class UserDAO {
         String sql = "select * from USERS where userId = ?";
         PreparedStatement pstmt = getConnection().prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
-        if (rs.next()) {
-            User user = new User(
-                    rs.getString("userId"),
-                    rs.getString("password"),
-                    rs.getString("name"),
-                    rs.getString("email"));
-            return user;
+
+        if (!rs.next()) {
+            return null;
         }
-        return null;
+        return new User(
+                rs.getString("userId"),
+                rs.getString("password"),
+                rs.getString("name"),
+                rs.getString("email"));
     }
+
 }
+
