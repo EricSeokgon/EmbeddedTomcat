@@ -2,11 +2,13 @@ package db;
 
 import org.junit.Before;
 import org.junit.Test;
+import user.User;
 import user.UserTest;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -35,8 +37,14 @@ public class UserDAOTest {
     }
 
     @Test
-    public void insert() throws Exception {
+    public void adduser() throws Exception {
         userDao.insert(UserTest.test_user);
+    }
+
+    @Test
+    public void findByuserId() throws Exception {
+        User user = userDao.findByUserId("userId");
+        assertEquals(UserTest.test_user, user);
     }
 
 

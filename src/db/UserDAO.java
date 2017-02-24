@@ -2,10 +2,7 @@ package db;
 
 import user.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Project: EmbeddedTomcat
@@ -41,5 +38,20 @@ public class UserDAO {
         pstmt.setString(4, test_user.getEmail());
 
         pstmt.executeUpdate();
+    }
+
+    public User findByUserId(String userId) throws SQLException {
+        String sql = "select * from USERS where userId = ?";
+        PreparedStatement pstmt = getConnection().prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            User user = new User(
+                    rs.getString("userId"),
+                    rs.getString("password"),
+                    rs.getString("name"),
+                    rs.getString("email"));
+            return user;
+        }
+        return null;
     }
 }
